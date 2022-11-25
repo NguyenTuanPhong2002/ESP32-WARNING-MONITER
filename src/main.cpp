@@ -122,13 +122,15 @@ String Warning()
   percen = (mq2_value + sound_value + tremors_value) / 3 * 40.95;
   Serial.print("Warning value = ");
   Serial.println(percen);
-  if (percen > 60)
+  if (percen > 60000)
   {
-    digitalWrite(Horn, 1);
+    digitalWrite(Horn, 0);
+    delay(1000);
   }
   else
   {
-    digitalWrite(Horn, 0);
+    digitalWrite(Horn, 1);
+    delay(1000);
   }
   return String(percen);
 }
@@ -381,7 +383,7 @@ void loop()
     display.setTextColor(WHITE);
     display.setCursor(0, 0);
     display.print("Muc am thanh = ");
-    display.setCursor(80, 0);
+    display.setCursor(90, 0);
     display.print(readSound());
     display.setCursor(0, 20);
     display.print("Muc rung chan = ");
